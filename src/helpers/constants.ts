@@ -1,9 +1,13 @@
 import {Vector3} from '@react-three/fiber';
 
-export const RADIUS = 1;
+// I recommend calculating the phone properties
+// based on the aspect ratio of the video.
+const VIDEO_ASPECT_RATIO = 2 / 1;
+
+export const CAMERA_DISTANCE = 2.5;
 export const Z_FLICKER_PREVENTION = 0.001;
 
-export const PHONE_HEIGHT = 2;
+export const PHONE_HEIGHT = VIDEO_ASPECT_RATIO;
 export const PHONE_WIDTH = 1;
 export const PHONE_THICKNESS = 0.15;
 export const PHONE_BEVEL = 0.04;

@@ -3,6 +3,7 @@ import React, {useEffect, useMemo} from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {VideoTexture} from 'three';
 import {
+	CAMERA_POSITION,
 	PHONE_COLOR,
 	PHONE_CURVE_SEGMENTS,
 	PHONE_HEIGHT,
@@ -11,7 +12,6 @@ import {
 	PHONE_SHININESS,
 	PHONE_THICKNESS,
 	PHONE_WIDTH,
-	RADIUS,
 	SCREEN_HEIGHT,
 	SCREEN_POSITION,
 	SCREEN_RADIUS,
@@ -30,9 +30,9 @@ export const Phone: React.FC<{
 	// Then make it look at the object.
 	const camera = useThree((state) => state.camera);
 	useEffect(() => {
-		camera.position.set(0, 0, RADIUS * 2.5);
+		camera.position.set(0, 0, CAMERA_POSITION);
 		camera.near = 0.2;
-		camera.far = Math.max(5000, RADIUS * 4);
+		camera.far = Math.max(5000, CAMERA_POSITION * 2);
 		camera.lookAt(0, 0, 0);
 	}, [camera]);
 
