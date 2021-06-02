@@ -9,6 +9,11 @@ import {Scene} from './Scene';
 
 // You can play around with the example or delete everything inside the canvas.
 
+// The device frame automatically adjusts to the video aspect ratio.
+// Change the variable below to try out tablet mode:
+type Device = 'phone' | 'tablet';
+const deviceType: Device = 'phone';
+
 // Remotion Docs:
 // https://remotion.dev/docs
 
@@ -22,27 +27,15 @@ export const RemotionVideo: React.FC = () => {
 	return (
 		<>
 			<Composition
-				id="Phone"
+				id="Scene"
 				component={Scene}
 				durationInFrames={300}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={1280}
+				height={720}
 				defaultProps={{
-					videoSrc: phone,
-					baseScale: 1,
-				}}
-			/>
-			<Composition
-				id="Tablet"
-				component={Scene}
-				durationInFrames={300}
-				fps={30}
-				width={1920}
-				height={1080}
-				defaultProps={{
-					videoSrc: tablet,
-					baseScale: 1.8,
+					videoSrc: deviceType === 'phone' ? phone : tablet,
+					baseScale: deviceType === 'phone' ? 1 : 1.8,
 				}}
 			/>
 		</>

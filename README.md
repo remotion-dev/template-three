@@ -1,12 +1,20 @@
-# Remotion video
+# Remotion + React Three Fiber Demo
+
+[Click here to create a repository based off this template!](https://github.com/JonnyBurger/remotion-template-three/generate)
 
 <p align="center">
-  <a href="https://github.com/JonnyBurger/remotion-logo">
-    <img src="https://github.com/JonnyBurger/remotion-logo/raw/main/withtitle/element-0.png">
-  </a>
+    <img src="demo.gif" style="border-radius: 5px">
 </p>
 
-Welcome to your Remotion project!
+This is a lightweight boilerplate for [Remotion](https://github.com/jonnyburger/remotion) with [React Three Fiber](https://github.com/pmndrs/react-three-fiber) and [@remotion/three](http://remotion.dev/docs/three) preinstalled.
+
+- [Remotion documentation](https://remotion.dev)
+- [React Three Fiber documentation](https://docs.pmnd.rs/react-three-fiber)
+- [@remotion/three documentation](http://remotion.dev/docs/three)
+
+This example features a phone with a screen. You can easily switch out the video and change a series of parameters, like size, color, aspect ratio, corner radius etc. of the phone.
+
+You can also simply delete everything inside the canvas to start off with your own 3D project.
 
 ## Commands
 
@@ -16,7 +24,7 @@ Welcome to your Remotion project!
 npm start
 ```
 
-**Render video**
+**Render MP4 video**
 
 ```console
 npm run build
@@ -38,4 +46,7 @@ Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurge
 
 ## License
 
-Notice that for some entities a company license is needed. Read [the terms here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).
+Notice that for some entities a Remotion company license is needed.  
+Read [the Remotion License here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).
+
+The content of this template is licensed under MIT.

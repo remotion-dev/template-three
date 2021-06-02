@@ -4,7 +4,7 @@
 	"description": "A React Three Fiber Project",
 	"scripts": {
 		"start": "remotion preview src/index.tsx",
-		"build": "remotion render src/index.tsx Phone out.mp4",
+		"build": "remotion render src/index.tsx Scene out.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
