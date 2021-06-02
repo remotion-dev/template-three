@@ -14,6 +14,9 @@ export const PHONE_COLOR = 0x41a7f5;
 export const SCREEN_WIDTH = PHONE_WIDTH - PHONE_BEVEL * 2;
 export const SCREEN_HEIGHT = PHONE_HEIGHT - PHONE_BEVEL * 2;
 
+// Define the radius of the screen and the frame.
+// It looks better if the outer radius is a bit bigger,
+// formula taken from https://twitter.com/joshwcomeau/status/1349782080021028865
 export const SCREEN_RADIUS = 0.07;
 export const PHONE_RADIUS = SCREEN_RADIUS + (PHONE_WIDTH - SCREEN_WIDTH) / 2;
 
