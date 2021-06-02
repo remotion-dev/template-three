@@ -1,12 +1,12 @@
 import {Composition} from 'remotion';
-import {Main} from './Main';
+import {Scene} from './Main';
 
 export const RemotionVideo: React.FC = () => {
 	return (
 		<>
 			<Composition
-				id="HelloWorld"
-				component={Main}
+				id="Scene"
+				component={Scene}
 				durationInFrames={300}
 				fps={30}
 				width={1920}

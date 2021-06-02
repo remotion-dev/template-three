@@ -14,7 +14,7 @@ const videoStyle: React.CSSProperties = {
 	opacity: 0,
 };
 
-export const Main: React.FC = () => {
+export const Scene: React.FC = () => {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const {width, height} = useVideoConfig();
 
