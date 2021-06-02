@@ -8,7 +8,7 @@ import {
 	PHONE_COLOR,
 	PHONE_CURVE_SEGMENTS,
 	PHONE_SHININESS,
-} from './helpers/constants';
+} from './helpers/layout';
 import {roundedRect} from './helpers/rounded-rectangle';
 import {RoundedBox} from './RoundedBox';
 
