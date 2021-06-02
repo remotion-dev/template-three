@@ -1,46 +1,47 @@
-import {useThree, Vector3} from '@react-three/fiber';
+import {useThree} from '@react-three/fiber';
 import React, {useEffect, useMemo} from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {VideoTexture} from 'three';
-import {roundedRect} from './rounded-rectangle';
+import {
+	PHONE_COLOR,
+	PHONE_HEIGHT,
+	PHONE_RADIUS,
+	PHONE_THICKNESS,
+	PHONE_WIDTH,
+	RADIUS,
+	SCREEN_POSITION,
+	SCREEN_RADIUS,
+	SCREEN_SCALE,
+} from './helpers/constants';
+import {roundedRect} from './helpers/rounded-rectangle';
 import {RoundedBox} from './RoundedBox';
 
-const RADIUS = 1;
-const Z_FLICKER_PREVENTION = 0.001;
-
-const PHONE_HEIGHT = 2;
-const PHONE_WIDTH = 1;
-const PHONE_THICKNESS = 0.3;
-const PHONE_BEVEL = 0.04;
-
-const PHONE_COLOR = 0x41a7f5;
-const SCREEN_WIDTH = PHONE_WIDTH - PHONE_BEVEL * 2;
-const SCREEN_HEIGHT = PHONE_HEIGHT - PHONE_BEVEL * 2;
-
-const SCREEN_RADIUS = 0.07;
-const PHONE_RADIUS = SCREEN_RADIUS + (PHONE_WIDTH - SCREEN_WIDTH) / 2;
-
-const SCREEN_POSITION = [
-	-SCREEN_WIDTH / 2,
-	-SCREEN_HEIGHT / 2,
-	PHONE_THICKNESS / 2 + Z_FLICKER_PREVENTION,
-] as Vector3;
-
-const SCREEN_SCALE = [SCREEN_WIDTH, SCREEN_HEIGHT, 1] as Vector3;
-
-export const Mesh: React.FC<{
+export const Phone: React.FC<{
 	videoTexture: VideoTexture | null;
 }> = ({videoTexture}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
-	const camera = useThree((state) => state.camera);
 
+	// Place a camera and set the distance to the object.
+	// Then make it look at the object.
+	const camera = useThree((state) => state.camera);
+	useEffect(() => {
+		camera.position.set(0, 0, RADIUS * 2.5);
+		camera.near = 0.2;
+		camera.far = Math.max(5000, RADIUS * 4);
+		camera.lookAt(0, 0, 0);
+	}, [camera]);
+
+	// During the whole scene, the phone is rotating.
+	// 2 * Math.PI is a full rotation.
 	const constantRotation = interpolate(
 		frame,
 		[0, durationInFrames],
-		[0, Math.PI * 4]
+		[0, Math.PI * 6]
 	);
 
+	// When the composition starts, there is some extra
+	// rotation and translation.
 	const entranceAnimation = spring({
 		frame,
 		fps,
@@ -50,23 +51,22 @@ export const Mesh: React.FC<{
 		},
 	});
 
-	useEffect(() => {
-		camera.position.set(0, 0, RADIUS * 2.5);
-		camera.near = 0.2;
-		camera.far = Math.max(5000, RADIUS * 4);
-		camera.lookAt(0, 0, 0);
-	}, [camera]);
-
+	// Calculate the entrance rotation,
+	// doing one full spin
 	const entranceRotation = interpolate(
 		entranceAnimation,
 		[0, 1],
-		[0, Math.PI * 2]
+		[Math.PI * 2, 0]
 	);
 
+	// Calculating the total rotation of the phone
 	const rotateY = entranceRotation + constantRotation;
 
+	// Calculating the translation of the phone at the beginning.
+	// The start position of the phone is set to 4 "units"
 	const translateY = interpolate(entranceAnimation, [0, 1], [-4, 0]);
 
+	// Calculate a rounded rectangle for the phone screen
 	const screenGeometry = useMemo(() => {
 		return roundedRect({
 			x: 0,

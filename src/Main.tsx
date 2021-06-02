@@ -2,7 +2,7 @@ import {Environment} from '@react-three/drei';
 import {ThreeCanvas, useVideoTexture} from '@remotion/three';
 import React, {useRef} from 'react';
 import {AbsoluteFill, useVideoConfig, Video} from 'remotion';
-import {Mesh} from './Mesh';
+import {Phone} from './Phone';
 import src from './vid.mp4';
 
 const container: React.CSSProperties = {
@@ -14,7 +14,7 @@ const videoStyle: React.CSSProperties = {
 	opacity: 0,
 };
 
-export const HelloWorld: React.FC = () => {
+export const Main: React.FC = () => {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const {width, height} = useVideoConfig();
 
@@ -26,7 +26,7 @@ export const HelloWorld: React.FC = () => {
 				<Environment preset="city" />
 				<ambientLight intensity={1.5} color={0xffffff} />
 				<pointLight position={[10, 10, 0]} />
-				<Mesh videoTexture={texture} />
+				<Phone videoTexture={texture} />
 			</ThreeCanvas>
 		</AbsoluteFill>
 	);
