@@ -3,45 +3,45 @@ import React, {useEffect, useMemo} from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {VideoTexture} from 'three';
 import {
-	CAMERA_POSITION,
+	CAMERA_DISTANCE,
+	getPhoneLayout,
 	PHONE_COLOR,
 	PHONE_CURVE_SEGMENTS,
-	PHONE_HEIGHT,
-	PHONE_POSITION,
-	PHONE_RADIUS,
 	PHONE_SHININESS,
-	PHONE_THICKNESS,
-	PHONE_WIDTH,
-	SCREEN_HEIGHT,
-	SCREEN_POSITION,
-	SCREEN_RADIUS,
-	SCREEN_WIDTH,
 } from './helpers/constants';
 import {roundedRect} from './helpers/rounded-rectangle';
 import {RoundedBox} from './RoundedBox';
 
 export const Phone: React.FC<{
 	videoTexture: VideoTexture | null;
-}> = ({videoTexture}) => {
+	aspectRatio: number;
+	baseScale: number;
+}> = ({aspectRatio, videoTexture, baseScale}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
+
+	const layout = useMemo(
+		() => getPhoneLayout(aspectRatio, baseScale),
+		[aspectRatio, baseScale]
+	);
 
 	// Place a camera and set the distance to the object.
 	// Then make it look at the object.
 	const camera = useThree((state) => state.camera);
 	useEffect(() => {
-		camera.position.set(0, 0, CAMERA_POSITION);
+		camera.position.set(0, 0, CAMERA_DISTANCE);
 		camera.near = 0.2;
-		camera.far = Math.max(5000, CAMERA_POSITION * 2);
+		camera.far = Math.max(5000, CAMERA_DISTANCE * 2);
 		camera.lookAt(0, 0, 0);
 	}, [camera]);
 
+	// Make the video fill the phone texture
 	useEffect(() => {
 		if (videoTexture) {
-			videoTexture.repeat.y = 1 / SCREEN_HEIGHT;
-			videoTexture.repeat.x = 1 / SCREEN_WIDTH;
+			videoTexture.repeat.y = 1 / layout.screen.height;
+			videoTexture.repeat.x = 1 / layout.screen.width;
 		}
-	}, [videoTexture]);
+	}, [aspectRatio, layout.screen.height, layout.screen.width, videoTexture]);
 
 	// During the whole scene, the phone is rotating.
 	// 2 * Math.PI is a full rotation.
@@ -80,11 +80,11 @@ export const Phone: React.FC<{
 	// Calculate a rounded rectangle for the phone screen
 	const screenGeometry = useMemo(() => {
 		return roundedRect({
-			width: SCREEN_WIDTH,
-			height: SCREEN_HEIGHT,
-			radius: SCREEN_RADIUS,
+			width: layout.screen.width,
+			height: layout.screen.height,
+			radius: layout.screen.radius,
 		});
-	}, []);
+	}, [layout.screen.height, layout.screen.radius, layout.screen.width]);
 
 	return (
 		<group
@@ -93,16 +93,16 @@ export const Phone: React.FC<{
 			position={[0, translateY, 0]}
 		>
 			<RoundedBox
-				radius={PHONE_RADIUS}
-				depth={PHONE_THICKNESS}
+				radius={layout.phone.radius}
+				depth={layout.phone.thickness}
 				curveSegments={PHONE_CURVE_SEGMENTS}
-				position={PHONE_POSITION}
-				width={PHONE_WIDTH}
-				height={PHONE_HEIGHT}
+				position={layout.phone.position}
+				width={layout.phone.width}
+				height={layout.phone.height}
 			>
 				<meshPhongMaterial color={PHONE_COLOR} shininess={PHONE_SHININESS} />
 			</RoundedBox>
-			<mesh position={SCREEN_POSITION}>
+			<mesh position={layout.screen.position}>
 				<shapeGeometry args={[screenGeometry]} />
 				{videoTexture ? (
 					<meshBasicMaterial morphTargets map={videoTexture} />

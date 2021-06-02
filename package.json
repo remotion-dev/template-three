@@ -11,10 +11,10 @@
 	"repository": {},
 	"license": "UNLICENSED",
 	"dependencies": {
-		"@react-three/drei": "^4.3.3",
 		"@react-three/fiber": "^6.1.2",
 		"@remotion/cli": "^2.1.6",
 		"@remotion/eslint-config": "^2.1.0",
+		"@remotion/media-utils": "^2.1.6",
 		"@remotion/three": "^2.1.6",
 		"@types/react": "^17.0.0",
 		"@types/three": "^0.128.0",
