@@ -15,7 +15,7 @@ export const PHONE_CURVE_SEGMENTS = 8;
 
 // The color of the phone, like a hex color but as a number
 // e.g. "#41a7f5" -> 0x41a7f5
-export const PHONE_COLOR = 0x41a7f5;
+export const PHONE_COLOR = 0x0e4eaf;
 
 // Calculate phone size. Whichever side is smaller gets
 // normalized to the base scale.
