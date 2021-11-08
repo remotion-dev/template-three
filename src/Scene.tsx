@@ -32,7 +32,7 @@ export const Scene: React.FC<{
 		<AbsoluteFill style={container}>
 			<Video ref={videoRef} src={videoSrc} style={videoStyle} />
 			{videoData ? (
-				<ThreeCanvas width={width} height={height}>
+				<ThreeCanvas linear width={width} height={height}>
 					<ambientLight intensity={1.5} color={0xffffff} />
 					<pointLight position={[10, 10, 0]} />
 					<Phone
