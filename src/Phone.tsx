@@ -105,7 +105,11 @@ export const Phone: React.FC<{
 			<mesh position={layout.screen.position}>
 				<shapeGeometry args={[screenGeometry]} />
 				{videoTexture ? (
-					<meshBasicMaterial morphTargets map={videoTexture} />
+					<meshBasicMaterial
+						color={0xffffff}
+						toneMapped={false}
+						map={videoTexture}
+					/>
 				) : null}
 			</mesh>
 		</group>
