@@ -18,6 +18,12 @@ You can also simply delete everything inside the canvas to start off with your o
 
 ## Commands
 
+**Install Dependencies**
+
+```console
+npm install
+```
+
 **Start Preview**
 
 ```console
