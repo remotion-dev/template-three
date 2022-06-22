@@ -15,7 +15,6 @@
 		"@remotion/cli": "^3.0.0",
 		"@remotion/eslint-config": "^3.0.0",
 		"@remotion/media-utils": "^3.0.0",
-		"@remotion/renderer": "^3.0.0",
 		"@remotion/three": "^3.0.0",
 		"eslint": "^8.14.0",
 		"prettier": "^2.6.2",
