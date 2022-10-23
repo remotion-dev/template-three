@@ -14,7 +14,7 @@ export const PHONE_SHININESS = 30;
 export const PHONE_CURVE_SEGMENTS = 8;
 
 // The color of the phone, like a hex color but as a number
-// e.g. "#41a7f5" -> 0x41a7f5
+// e.g. "#61a9e8" -> 0x61a9e8
 export const PHONE_COLOR = 0x61a9e8;
 
 // Calculate phone size. Whichever side is smaller gets
