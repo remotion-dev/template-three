@@ -1,6 +1,4 @@
-import {Composition} from 'remotion';
-import phone from './assets/phone.mp4';
-import tablet from './assets/tablet.mp4';
+import {Composition, staticFile} from 'remotion';
 import {Scene} from './Scene';
 
 // Welcome to the Remotion Three Starter Kit!
@@ -23,7 +21,7 @@ const deviceType: Device = 'phone';
 // React Three Fiber Docs:
 // https://docs.pmnd.rs/react-three-fiber/getting-started/introduction
 
-export const RemotionVideo: React.FC = () => {
+export const RemotionRoot: React.FC = () => {
 	return (
 		<>
 			<Composition
@@ -34,7 +32,10 @@ export const RemotionVideo: React.FC = () => {
 				width={1280}
 				height={720}
 				defaultProps={{
-					videoSrc: deviceType === 'phone' ? phone : tablet,
+					videoSrc:
+						deviceType === 'phone'
+							? staticFile('phone.mp4')
+							: staticFile('tablet.mp4'),
 					baseScale: deviceType === 'phone' ? 1 : 1.8,
 				}}
 			/>
