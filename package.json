@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "A React Three Fiber Project",
 	"scripts": {
-		"start": "remotion preview src/index.ts",
-		"build": "remotion render src/index.ts Scene out/video.mp4",
+		"start": "remotion preview",
+		"build": "remotion render Scene out/video.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
