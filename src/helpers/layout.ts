@@ -13,10 +13,6 @@ export const PHONE_SHININESS = 30;
 // are divided. Increase number for smoother phone
 export const PHONE_CURVE_SEGMENTS = 8;
 
-// The color of the phone, like a hex color but as a number
-// e.g. "#61a9e8" -> 0x61a9e8
-export const PHONE_COLOR = 0x61a9e8;
-
 // Calculate phone size. Whichever side is smaller gets
 // normalized to the base scale.
 const getPhoneHeight = (aspectRatio: number, baseScale: number): number => {

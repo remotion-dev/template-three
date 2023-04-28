@@ -1,3 +1,5 @@
+import {staticFile} from 'remotion';
+import {z, zColor} from 'remotion';
 import {getVideoMetadata, VideoMetadata} from '@remotion/media-utils';
 import {ThreeCanvas, useVideoTexture} from '@remotion/three';
 import React, {useEffect, useRef, useState} from 'react';
@@ -13,13 +15,24 @@ const videoStyle: React.CSSProperties = {
 	opacity: 0,
 };
 
-export const Scene: React.FC<{
-	videoSrc: string;
-	baseScale: number;
-}> = ({baseScale, videoSrc}) => {
+export const myCompSchema = z.object({
+	phoneColor: zColor(),
+	deviceType: z.enum(['phone', 'tablet']),
+});
+
+type MyCompSchemaType = z.infer<typeof myCompSchema>;
+
+export const Scene: React.FC<
+	{
+		baseScale: number;
+	} & MyCompSchemaType
+> = ({baseScale, phoneColor, deviceType}) => {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const {width, height} = useVideoConfig();
 	const [videoData, setVideoData] = useState<VideoMetadata | null>(null);
+
+	const videoSrc =
+		deviceType === 'phone' ? staticFile('phone.mp4') : staticFile('tablet.mp4');
 
 	useEffect(() => {
 		getVideoMetadata(videoSrc)
@@ -36,6 +49,7 @@ export const Scene: React.FC<{
 					<ambientLight intensity={1.5} color={0xffffff} />
 					<pointLight position={[10, 10, 0]} />
 					<Phone
+						phoneColor={phoneColor}
 						baseScale={baseScale}
 						videoTexture={texture}
 						aspectRatio={videoData.aspectRatio}
