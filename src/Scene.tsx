@@ -1,10 +1,11 @@
 import {staticFile} from 'remotion';
-import {z, zColor} from 'remotion';
 import {getVideoMetadata, VideoMetadata} from '@remotion/media-utils';
 import {ThreeCanvas, useVideoTexture} from '@remotion/three';
 import React, {useEffect, useRef, useState} from 'react';
 import {AbsoluteFill, useVideoConfig, Video} from 'remotion';
 import {Phone} from './Phone';
+import {z} from 'zod';
+import {zColor} from '@remotion/zod-types';
 
 const container: React.CSSProperties = {
 	backgroundColor: 'white',
