@@ -52,7 +52,7 @@ Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurge
 
 ## License
 
-Notice that for some entities a Remotion company license is needed.  
+Note that for some entities a Remotion company license is needed.  
 Read [the Remotion License here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).
 
 The content of this template is licensed under MIT.
