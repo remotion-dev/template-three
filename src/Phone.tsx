@@ -5,7 +5,6 @@ import {VideoTexture} from 'three';
 import {
 	CAMERA_DISTANCE,
 	getPhoneLayout,
-	PHONE_COLOR,
 	PHONE_CURVE_SEGMENTS,
 	PHONE_SHININESS,
 } from './helpers/layout';
@@ -16,7 +15,8 @@ export const Phone: React.FC<{
 	videoTexture: VideoTexture | null;
 	aspectRatio: number;
 	baseScale: number;
-}> = ({aspectRatio, videoTexture, baseScale}) => {
+	phoneColor: string;
+}> = ({aspectRatio, videoTexture, baseScale, phoneColor}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
 
@@ -100,7 +100,7 @@ export const Phone: React.FC<{
 				width={layout.phone.width}
 				height={layout.phone.height}
 			>
-				<meshPhongMaterial color={PHONE_COLOR} shininess={PHONE_SHININESS} />
+				<meshPhongMaterial color={phoneColor} shininess={PHONE_SHININESS} />
 			</RoundedBox>
 			<mesh position={layout.screen.position}>
 				<shapeGeometry args={[screenGeometry]} />
