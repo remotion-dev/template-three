@@ -1,7 +1,9 @@
 // All configuration options: https://remotion.dev/docs/config
 // Each option also is available as a CLI flag: https://remotion.dev/docs/cli
-// ! The configuration file does only apply if you render via the CLI !
 
-import {Config} from 'remotion';
+// Note: When using the Node.JS APIs, the config file doesn't apply. Instead, pass options directly to the APIs
 
-Config.setImageFormat('jpeg');
+import {Config} from '@remotion/cli/config';
+
+Config.setChromiumOpenGlRenderer('angle');
+Config.setVideoImageFormat('jpeg');
