@@ -39,7 +39,7 @@ npm run build
 **Upgrade Remotion**
 
 ```console
-npx remotion upgrade
+npx run upgrade
 ```
 
 ## Docs
