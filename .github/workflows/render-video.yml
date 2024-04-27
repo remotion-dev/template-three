@@ -1,6 +1,5 @@
 name: Render video
-on:
-  push
+on: push
 jobs:
   render:
     name: Render video
