@@ -11,24 +11,25 @@
 	"repository": {},
 	"license": "UNLICENSED",
 	"dependencies": {
-		"@react-three/fiber": "^8.8.10",
+		"@react-three/fiber": "8.13.5",
 		"@remotion/cli": "^4.0.0",
 		"@remotion/media-utils": "^4.0.0",
 		"@remotion/three": "^4.0.0",
 		"@remotion/zod-types": "^4.0.0",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
+		"react": "18.3.1",
+		"react-dom": "18.3.1",
 		"remotion": "^4.0.0",
-		"three": "^0.145.0",
+		"three": "0.158.0",
 		"zod": "3.22.3"
 	},
 	"devDependencies": {
 		"@remotion/eslint-config": "^4.0.0",
-		"@types/react": "^18.0.26",
-		"@types/three": "^0.144.0",
-		"@types/web": "^0.0.143",
-		"eslint": "^8.43.0",
-		"prettier": "^3.2.5",
-		"typescript": "^5.4.5"
-	}
+		"@types/react": "18.3.1",
+		"@types/three": "0.157.2",
+		"@types/web": "0.0.78",
+		"eslint": "8.56.0",
+		"prettier": "3.2.5",
+		"typescript": "5.3.3"
+	},
+	"private": true
 }
