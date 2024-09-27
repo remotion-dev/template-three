@@ -5,7 +5,7 @@
  * All configuration options: https://remotion.dev/docs/config
  */
 
-import {Config} from '@remotion/cli/config';
+import { Config } from "@remotion/cli/config";
 
-Config.setChromiumOpenGlRenderer('angle');
-Config.setVideoImageFormat('jpeg');
+Config.setChromiumOpenGlRenderer("angle");
+Config.setVideoImageFormat("jpeg");
