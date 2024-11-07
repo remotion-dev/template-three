@@ -4,9 +4,9 @@
   "description": "A React Three Fiber Project",
   "scripts": {
     "dev": "remotion studio",
-    "build": "remotion render Scene",
+    "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "test": "eslint src --ext ts,tsx,js,jsx && tsc"
+    "lint": "eslint src --ext ts,tsx,js,jsx && tsc"
   },
   "repository": {},
   "license": "UNLICENSED",
