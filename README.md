@@ -59,3 +59,18 @@ Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurge
 Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
 
 The content of this template is licensed under MIT.
+
+## Docker
+
+```sh
+$ docker build --platform=linux/amd64 -t three-template-renderer .
+$ npm run bundle
+$ docker run --platform=linux/amd64 --rm \
+    -v "$PWD/build":/bundle \
+    -v "$PWD/tmp":/output \
+    three-template-renderer \
+      --bundle /bundle \
+      --range "0-100" \
+      --props '{}' \
+      --out "/output/chunk-0-100.ts"
+```
