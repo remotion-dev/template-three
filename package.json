@@ -6,30 +6,37 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render": "remotion render src/index.ts Scene out/myscene.mp4",
+    "bundle": "remotion bundle src/index.ts",
+    "render-chunk": "tsx src/render-chunk.mts"
   },
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
     "@react-three/fiber": "9.1.2",
-    "@remotion/cli": "^4.0.0",
-    "@remotion/media-utils": "^4.0.0",
-    "@remotion/three": "^4.0.0",
-    "@remotion/zod-types": "^4.0.0",
+    "@remotion/cli": "4.0.318",
+    "@remotion/media-utils": "4.0.318",
+    "@remotion/three": "4.0.318",
+    "@remotion/zod-types": "4.0.318",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "remotion": "^4.0.0",
+    "remotion": "4.0.318",
     "three": "0.171.0",
     "zod": "3.22.3"
   },
   "devDependencies": {
-    "@remotion/eslint-config-flat": "^4.0.0",
+    "@remotion/eslint-config-flat": "4.0.318",
     "@types/react": "19.0.0",
     "@types/three": "0.170.0",
     "@types/web": "0.0.166",
+    "@types/yargs": "^17.0.33",
     "eslint": "9.19.0",
     "prettier": "3.3.3",
-    "typescript": "5.8.2"
+    "tsx": "^4.20.3",
+    "typescript": "5.8.2",
+    "yargs": "^18.0.0"
   },
-  "private": true
+  "private": true,
+  "packageManager": "npm@10.9.0"
 }
