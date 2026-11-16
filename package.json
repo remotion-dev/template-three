@@ -21,7 +21,7 @@
     "remotion": "^4.0.0",
     "three": "0.178.0",
     "zod": "4.6.7",
-    "mediabunny": "1.64.0"
+    "mediabunny": "1.66.0"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "^4.0.0",
